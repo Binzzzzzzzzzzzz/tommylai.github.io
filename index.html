@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tommy Lai's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -18,234 +25,155 @@
             line-height: 1.6;
         }
 
-        nav {
-            background-color: #2a2a2a;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #00ff88;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            background-color: #00ff88;
-            color: #1a1a1a;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #00cc6e;
-            transform: scale(1.02);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        #about, #projects, #contact {
-            min-height: 60vh;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: #2a2a2a;
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-content {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .contact-links a {
-            background-color: #333333;
-            color: #ffffff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .contact-links a:hover {
-            background-color: #00ff88;
-            color: #1a1a1a;
-            transform: scale(1.02);
-        }
-
-        .contact-links a:active {
-            transform: scale(0.98);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-content {
-                padding: 0 1rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div id="root" className="container mx-auto"></div>
 
-    <section id="home" class="hero">
-        <h1>Welcome to Tommy Lai's Portfolio</h1>
-        <p>I'm a passionate developer creating innovative solutions.</p>
-        <a href="#projects" class="btn">View My Work</a>
-    </section>
+    <script type="text/babel">
+        // Project data
+        const projects = [
+            {
+                id: 1,
+                title: "PriceCompareApp",
+                description: "A full-stack app for comparing prices, built with Django, Expo, and RESTful APIs.",
+                tech: ["Django", "Expo", "RESTful APIs"],
+                link: "https://pricecompareapp.vercel.app/"
+            },
+            {
+                id: 2,
+                title: "Isotope Construction Website",
+                description: "A professional website for Isotope Construction, designed and developed using Wix, featuring a responsive layout and client-specific content.",
+                tech: ["Wix", "Responsive Design"],
+                link: "https://www.isotopeconstruction.com/"
+            }
+        ];
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi, I'm Tommy Lai, a web developer with 3 years of coding experience, including roles as an Associate Consultant at Computer and Technologies Solutions Limited (2018-2020) and Senior Programmer at Hong Kong Life Insurance Limited (2020-2022). I specialize in building responsive applications with HTML, CSS, JavaScript, and frameworks like Django and Expo, and I’ve also utilized Wix for client projects. Previously a baker for 3 years, I bring precision and creativity to my work. In my free time, I enjoy hiking and exploring new technologies.</p>
-    </section>
+        // NavBar Component
+        function NavBar() {
+            const scrollToSection = (id) => {
+                document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+            };
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>PriceCompareApp</h3>
-                <p>A full-stack app for comparing prices, built with Django, Expo, and RESTful APIs. <a href="https://pricecompareapp.vercel.app/">View Project</a></p>
-            </div>
-            <div class="project-card">
-                <h3>Isotope Construction Website</h3>
-                <p>A professional website for Isotope Construction, designed and developed using Wix, featuring a responsive layout and client-specific content. <a href="https://www.isotopeconstruction.com/">View Project</a></p>
-            </div>
-            <div class="project-card">
-                <h3>Project 3</h3>
-                <p>An interactive tool using [technologies used]. <a href="#">View Project</a></p>
-            </div>
-        </div>
-    </section>
+            return (
+                <nav className="bg-[#2a2a2a] p-4 fixed w-full top-0 z-10">
+                    <ul className="flex justify-center gap-8">
+                        <li><a href="#home" onClick={() => scrollToSection('#home')} className="text-white text-lg hover:text-[#00ff88] transition-colors">Home</a></li>
+                        <li><a href="#about" onClick={() => scrollToSection('#about')} className="text-white text-lg hover:text-[#00ff88] transition-colors">About</a></li>
+                        <li><a href="#projects" onClick={() => scrollToSection('#projects')} className="text-white text-lg hover:text-[#00ff88] transition-colors">Projects</a></li>
+                        <li><a href="#contact" onClick={() => scrollToSection('#contact')} className="text-white text-lg hover:text-[#00ff88] transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+            );
+        }
 
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact-content">
-            <p>Want to chat? Feel free to reach out via email or LinkedIn and I'll respond whenever I can.</p>
-            <div class="contact-links">
-                <a href="mailto:tommylai19@gmail.com">Email Me</a>
-                <a href="https://www.linkedin.com/in/tommy-lai-525747170" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-    </section>
+        // Hero Component
+        function Hero() {
+            return (
+                <section id="home" className="h-screen flex flex-col justify-center items-center text-center p-4">
+                    <h1 className="text-5xl md:text-6xl font-bold mb-4 animate-[fadeIn_1s_ease-in]">Welcome to Tommy Lai's Portfolio</h1>
+                    <p className="text-lg md:text-xl max-w-[600px] mb-8">I'm a passionate developer creating innovative solutions.</p>
+                    <a href="#projects" className="bg-[#00ff88] text-[#1a1a1a] px-6 py-3 rounded-md font-bold hover:bg-[#00cc6e] hover:scale-105 active:scale-95 transition-all">View My Work</a>
+                </section>
+            );
+        }
 
-    <script>
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // About Component
+        function About() {
+            return (
+                <section id="about" className="py-20 px-4 max-w-5xl mx-auto">
+                    <h2 className="text-4xl font-bold mb-6 text-center">About Me</h2>
+                    <p className="text-lg">
+                        Hi, I'm Tommy Lai, a web developer with 3 years of coding experience, including roles as an Associate Consultant at Computer and Technologies Solutions Limited (2018-2020) and Senior Programmer at Hong Kong Life Insurance Limited (2020-2022). I specialize in building responsive applications with HTML, CSS, JavaScript, and frameworks like Django and Expo, and I’ve also utilized Wix for client projects. Previously a baker for 3 years, I bring precision and creativity to my work. In my free time, I enjoy hiking, exploring new technologies, playing badminton, watching anime, and gaming.
+                    </p>
+                </section>
+            );
+        }
+
+        // ProjectCard Component
+        function ProjectCard({ project }) {
+            return (
+                <div className="bg-[#2a2a2a] p-6 rounded-lg hover:-translate-y-1 transition-transform">
+                    <h3 className="text-xl font-bold">{project.title}</h3>
+                    <p className="text-gray-300">{project.description} <a href={project.link} target="_blank" className="text-[#00ff88] hover:underline">View Project</a></p>
+                    <p className="text-sm text-gray-500">Tech: {project.tech.join(", ")}</p>
+                </div>
+            );
+        }
+
+        // Projects Component
+        function Projects() {
+            const [filter, setFilter] = React.useState("All");
+
+            const filteredProjects = filter === "All"
+                ? projects
+                : projects.filter(project => project.tech.includes(filter));
+
+            return (
+                <section id="projects" className="py-20 px-4 max-w-5xl mx-auto">
+                    <h2 className="text-4xl font-bold mb-6 text-center">My Projects</h2>
+                    <div className="mb-6 flex justify-center gap-4">
+                        <button
+                            onClick={() => setFilter("All")}
+                            className={`px-4 py-2 rounded ${filter === "All" ? "bg-[#00ff88] text-[#1a1a1a]" : "bg-[#333333] text-white"} hover:bg-[#00cc6e] transition-colors`}
+                        >
+                            All
+                        </button>
+                        <button
+                            onClick={() => setFilter("Django")}
+                            className={`px-4 py-2 rounded ${filter === "Django" ? "bg-[#00ff88] text-[#1a1a1a]" : "bg-[#333333] text-white"} hover:bg-[#00cc6e] transition-colors`}
+                        >
+                            Django
+                        </button>
+                        <button
+                            onClick={() => setFilter("Wix")}
+                            className={`px-4 py-2 rounded ${filter === "Wix" ? "bg-[#00ff88] text-[#1a1a1a]" : "bg-[#333333] text-white"} hover:bg-[#00cc6e] transition-colors`}
+                        >
+                            Wix
+                        </button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredProjects.map(project => (
+                            <ProjectCard key={project.id} project={project} />
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Contact Component
+        function Contact() {
+            return (
+                <section id="contact" className="py-20 px-4 max-w-xl mx-auto text-center">
+                    <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
+                    <p className="text-lg mb-8">Want to chat? Feel free to reach out via email or LinkedIn and I'll respond whenever I can.</p>
+                    <div className="flex flex-col md:flex-row justify-center gap-4">
+                        <a href="mailto:tommylai19@gmail.com" className="bg-[#333333] text-white px-6 py-3 rounded-lg hover:bg-[#00ff88] hover:text-[#1a1a1a] hover:scale-105 active:scale-95 transition-all">Email Me</a>
+                        <a href="https://www.linkedin.com/in/tommy-lai-525747170" target="_blank" className="bg-[#333333] text-white px-6 py-3 rounded-lg hover:bg-[#00ff88] hover:text-[#1a1a1a] hover:scale-105 active:scale-95 transition-all">LinkedIn</a>
+                    </div>
+                </section>
+            );
+        }
+
+        // Main App Component
+        function App() {
+            return (
+                <div>
+                    <NavBar />
+                    <Hero />
+                    <About />
+                    <Projects />
+                    <Contact />
+                </div>
+            );
+        }
+
+        // Render the App
+        ReactDOM.render(<App />, document.getElementById("root"));
     </script>
 </body>
 </html>
